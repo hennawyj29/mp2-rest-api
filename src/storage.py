@@ -15,7 +15,7 @@ class DatasetStorage:
             "filename": filename,
             "df": df.copy()
         }
-        logger.debug("Stored dataset: id=%s", dataset_id, len(df))
+        logger.debug("Stored dataset: id=%s, rows=%s", dataset_id, len(df))
         return dataset_id
 
     def get(self, dataset_id):
@@ -24,7 +24,7 @@ class DatasetStorage:
             return None
         
         df = self._store[dataset_id]["df"]
-        logger.debug("Retrieved dataset copy: id=%s", dataset_id, len(df))
+        logger.debug("Retrieved dataset copy: id=%s, rows=%s", dataset_id, len(df))
         return df.copy()
 
     def get_metadata(self, dataset_id):
@@ -32,10 +32,10 @@ class DatasetStorage:
         if dataset_id not in self._store:
             return None
         
-        dataset = self.store[dataset_id]
+        dataset = self._store[dataset_id]
         df = dataset["df"]
 
-        metadeta = {
+        metadata = {
             "id": dataset_id,
             "filename": dataset["filename"],
             "rows": len(df),
@@ -43,7 +43,7 @@ class DatasetStorage:
             "column_names": df.columns.tolist()
         }
 
-        logger.debug("Retrieved metadeta: id=%s", dataset_id)
+        logger.debug("Retrieved metadata: id=%s", dataset_id)
         return metadata
 
     def update(self, dataset_id, df):

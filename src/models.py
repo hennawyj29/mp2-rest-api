@@ -9,5 +9,5 @@ class DatasetInfo(BaseModel):
     filename: str
     rows: int
     columns: int
-    columns_names: list[str]
+    column_names: list[str]
     
