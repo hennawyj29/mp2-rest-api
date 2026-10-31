@@ -1,0 +1,1 @@
+This project uses FastAPI to upload, store, process, and retrieve CSV data. It uses functions from MP1 to clean data by removing duplicates, handling missing values, and checking for outliers. It also includes logging to track API requests and tests to make sure everything works correctly.
